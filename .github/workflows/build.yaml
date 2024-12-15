@@ -27,3 +27,9 @@ jobs:
                 username: ${{ github.actor }}
                 password: ${{secrets.CONTAINER_REGISTRY_TOKEN }}
             
+            - name: Build Docker Image 
+              run:  docker build -t ghcr.io/${{ github.repository_owner }}/nextapp:latest
+
+            - name: Docker Push 
+              run: docker push ghcr.io/${{ github.repository_owner }}/nextapp:latest
+            
